@@ -39,10 +39,11 @@ export default function ContactPage() {
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
+            <label htmlFor="name" className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
               Name *
             </label>
             <input
+              id="name"
               {...register('name', { required: 'Name is required' })}
               className="w-full border border-border rounded-md px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
               placeholder="Your name"
@@ -51,10 +52,11 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
+            <label htmlFor="email" className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
               Email *
             </label>
             <input
+              id="email"
               {...register('email', {
                 required: 'Email is required',
                 pattern: { value: /\S+@\S+\.\S+/, message: 'Invalid email' },
@@ -67,10 +69,11 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
+            <label htmlFor="company" className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
               Company
             </label>
             <input
+              id="company"
               {...register('company')}
               className="w-full border border-border rounded-md px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
               placeholder="Company name (optional)"
@@ -78,10 +81,11 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
+            <label htmlFor="message" className="text-xs uppercase tracking-widest text-muted font-semibold block mb-2">
               Message *
             </label>
             <textarea
+              id="message"
               {...register('message', { required: 'Message is required' })}
               rows={5}
               className="w-full border border-border rounded-md px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
