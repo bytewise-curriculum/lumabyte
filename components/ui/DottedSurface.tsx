@@ -50,14 +50,15 @@ export function DottedSurface() {
 
     // Animate wave
     let animId: number
-    const posAttr = geometry.getAttribute('position') as THREE.BufferAttribute
+    const posAttr = geometry.getAttribute('position')! as THREE.BufferAttribute
     const animate = () => {
       animId = requestAnimationFrame(animate)
       const t = Date.now() * 0.001
+      const arr = posAttr.array as Float32Array
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const idx = (i * rows + j) * 3
-          posAttr.array[idx + 2] = Math.sin(i * 0.5 + t) * Math.cos(j * 0.5 + t) * 1.5
+          arr[idx + 2] = Math.sin(i * 0.5 + t) * Math.cos(j * 0.5 + t) * 1.5
         }
       }
       posAttr.needsUpdate = true
@@ -78,7 +79,9 @@ export function DottedSurface() {
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', handleResize)
-      mount.removeChild(renderer.domElement)
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement)
+      }
       renderer.dispose()
       geometry.dispose()
       material.dispose()
