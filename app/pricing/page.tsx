@@ -1,53 +1,12 @@
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pricingTiers } from '@/lib/pricing'
 
 export const metadata: Metadata = {
   title: 'Pricing — LumaByte',
   description: 'Transparent pricing for web development, infrastructure, AI integration, and more.',
 }
-
-const tiers = [
-  {
-    name: 'Project-Based',
-    price: 'Custom Quote',
-    description: 'Best for defined projects with clear scope.',
-    features: [
-      'Fixed scope & deliverables',
-      'Milestone-based payment',
-      'Full project documentation',
-      'Post-launch support (30 days)',
-    ],
-    cta: 'Get a Quote',
-    featured: false,
-  },
-  {
-    name: 'Retainer',
-    price: 'Starting at $2,500/mo',
-    description: 'Ongoing technical partnership for growing businesses.',
-    features: [
-      'Dedicated hours each month',
-      'Priority response time',
-      'Continuous development & support',
-      'Monthly reporting & strategy calls',
-    ],
-    cta: 'Start a Retainer',
-    featured: true,
-  },
-  {
-    name: 'Hourly',
-    price: 'Contact for Rate',
-    description: 'Flexible engagement for audits, consulting, and small tasks.',
-    features: [
-      'Code audits & reviews',
-      'Technical consulting',
-      'Short-term engagements',
-      'Flexible scheduling',
-    ],
-    cta: 'Book a Session',
-    featured: false,
-  },
-]
 
 export default function PricingPage() {
   return (
@@ -61,7 +20,7 @@ export default function PricingPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {tiers.map((tier) => (
+        {pricingTiers.map((tier) => (
           <div
             key={tier.name}
             className={`rounded-xl border p-8 flex flex-col gap-6 ${
